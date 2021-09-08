@@ -1,0 +1,9 @@
+{
+  "Login": {
+    "proceed": "Proceed",
+    "login": "Login",
+    "userName": "UserName",
+    "password": "Password",
+    "forgotPass": "Forget Password?"
+  }
+}
