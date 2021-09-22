@@ -3,18 +3,20 @@ import 'package:shoplaza/views/editProfile/components/fields.dart';
 import 'package:shoplaza/views/editProfile/components/profile_photo.dart';
 import 'package:shoplaza/widgets/appBar.dart';
 import 'package:shoplaza/widgets/main_button.dart';
-
-class EditProfile extends StatelessWidget {
+import 'package:easy_localization/easy_localization.dart';
+class EditProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appBar('Edit Profile'),
+        appBar: appBar('EditProfile.EditProfile'.tr()),
         body: ListView(
+          padding: EdgeInsets.symmetric(vertical: 30),
           physics: BouncingScrollPhysics(),
           children: [
             ProfilePhoto(),
             Fields(),
-            MainButton(text: 'Save Changes')
+            MainButton(text: 'EditProfile.saveChanges'.tr(),press: (){},)
+
           ],
         ));
   }

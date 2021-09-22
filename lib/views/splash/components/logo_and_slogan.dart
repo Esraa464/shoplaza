@@ -10,7 +10,7 @@ class SplashLogo extends StatelessWidget {
       child: Column(
         children: [
           Image.asset('assets/images/logo.PNG'),
-          Text('Be lovelier with lovely products',style: TextStyle(fontWeight: FontWeight.w700),)
+          Text('Be lovelier with lovely products',style: TextStyle(fontFamily:'Pacifico'),)
         ],
       ),
     );

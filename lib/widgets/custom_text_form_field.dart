@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextFormField extends StatefulWidget {
   final TextEditingController controller;
   final TextInputType type;
 
-  // final String hintText;
   final IconData suffix;
   final String labelText;
   final bool isPassword;
@@ -16,7 +15,6 @@ class CustomTextFormField extends StatelessWidget {
     Key key,
     @required this.controller,
     @required this.type,
-    // @required this.hintText,
     this.prefix,
     this.suffix,
     @required this.labelText,
@@ -26,54 +24,69 @@ class CustomTextFormField extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    // IconData suffix = Icons.visibility_off;
+  _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
+}
 
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  String errorMessage(String str) {
+    switch (widget.labelText) {
+      case 'First Name':
+        return 'First name is empty!';
+      case 'Last Name':
+        return 'Last name is empty!';
+      case 'Email':
+        return 'Email is empty!';
+      case 'Password':
+        return 'Password is empty!';
+    }
+    return 'hi';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    IconData suffix = Icons.visibility_off;
+    bool isShown = true;
+    bool visible = true;
     return TextFormField(
-        // obscureText: isPassword ? LoginController().visible : false,
-        controller: controller,
-        keyboardType: type,
+        // validator: (value) {
+        //   if (value.isEmpty) {
+        //     return errorMessage(widget.labelText);
+        //   }
+        //   return '';
+        // },
+        // obscureText: widget.labelText == 'Password' ? true : false,
+        obscureText: widget.isPassword ? visible : false,
+        // obscureText: widget.isPassword ? LoginController().visible : false,
+        controller: widget.controller,
+        keyboardType: widget.type,
         cursorColor: Colors.red,
         cursorHeight: 25,
         decoration: InputDecoration(
-            labelText: labelText,
-            labelStyle: TextStyle(fontSize: 15, color: Colors.grey[700]),
-            focusedBorder:
-                UnderlineInputBorder(borderSide: BorderSide(color: Colors.red)),
-            // hintStyle: TextStyle(
-            //     color: Colors.grey[400],
-            //     fontSize: 15,
-            //     fontWeight: FontWeight.w600),
-            // hintText: hintText,
-            // suffixIcon: Icon(suffix),
-            prefixIcon: prefix != null
-                ? Icon(
-                    prefix,
-                    color: Colors.grey[600],
-                    // isPrefix ?
-                    //     Icon(
-                    //       prefix,
-                    //       color: Colors.grey[600],
-                    //     ):null,
-
-                    // prefixStyle:
-                    // isHidden
-                    //     ? IconButton(
-                    //     icon: Icon(
-                    //       suffix,color:Colors.black,),
-                    //     onPressed: () {
-                    // LoginController().password();
-                    // setState(() {
-                    //   visable = !visable;
-                    //   isShown = !isShown;
-                    //   isShown
-                    //       ? suffix = Icons.visibility
-                    //       : suffix = Icons.visibility_off;
-                    // });
-                    // })
-                    // : null
-                    // ),
-                  )
-                : null));
+          suffixIcon: IconButton(
+            icon: Icon(
+              widget.suffix,
+            ),
+            onPressed: () {
+              setState(() {
+                visible = !visible;
+                isShown = !isShown;
+                isShown
+                    ? suffix = Icons.visibility
+                    : suffix = Icons.visibility_off;
+              });
+            },
+          ),
+          // prefixIcon: Icon(widget.prefix),
+          prefixIcon: widget.prefix != null
+              ? Icon(
+                  widget.prefix,
+                  color: Colors.grey[600],
+                )
+              : null,
+          labelText: widget.labelText,
+          labelStyle: TextStyle(fontSize: 15, color: Colors.grey[700]),
+          focusedBorder:
+              UnderlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+        ));
   }
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shoplaza/const/colors.dart';
 
-class HomeSearch extends StatelessWidget {
+import 'components/search_field.dart';
+
+class HomeSearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,17 +22,7 @@ class HomeSearch extends StatelessWidget {
                 Text('search'),
               ],
             ),
-            TextFormField(
-              cursorColor: Colors.red,
-              cursorHeight: 25,
-              decoration: InputDecoration(
-                  focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red)),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.red,
-                  )),
-            )
+            SearchField()
           ],
         ),
       ),

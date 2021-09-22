@@ -2,8 +2,61 @@
   "Login": {
     "proceed": "إمضى قدما في",
     "login": "تسجيل الدخول",
-    "userName": "إسم المستخدم",
+    "email": "البريد الإلكتروني",
     "password": "كلمة المرور",
+    "Sign up": "تسجيل مستخدم جديد",
     "forgotPass": "نسيت كلمة المرور؟"
+  },
+  "Home": {
+    "categories": "الأقسام",
+    "products": "المنتجات"
+  },
+  "SignUp": {
+    "SignUp": "تسجيل مستخدم جديد",
+    "Name": "اللإسم",
+    "phone": "رقم الموبايل",
+    "email": "ُالبريد الإلكتروني",
+    "password": "كلمة المرور",
+    "agree": "أوافق على ",
+    "Terms": "الشروط والأحكام ",
+    "and": "و ",
+    "Privacy": "سياسةالخصوصيه",
+    "Signup": "تسجيل مستخدم جديد"
+
+
+  },
+  "ForgottenPass": {
+    "forgottenPass": "نسيت كلمة المرور",
+    "email": "البريد الإلكتروني",
+    "forgotPass": "نسيت كلمة المرور",
+    "resetPass": "أعد ضبط كلمة السر"
+  },
+  "ResetPass": {
+    "resetPass": "إعادة ضبط كلمة المرور",
+    "currentPass": "كلمة المرور الحاليه",
+    "newPass": "كلمة المرور الجديده",
+    "confirmPass": "تأكيد كلمة المرور الحديده",
+    "updatePass": "تحديث كلمة المرور"
+  },
+  "HomeDrawer": {
+    "Languages": "اللغات",
+    "editProfile": "تعديل الصفحه الشخصيه",
+    "darkMode": "الوضع الليلى",
+    "settings": "الإعدادات"
+
+  },
+  "EditProfile": {
+    "EditProfile": "تعديل الملف الشخصى",
+    "changePhoto": "تغيير الصوره الشخصيه",
+    "name": "الإسم",
+    "birthday": "تاريخ الميلاد",
+    "email": "البريد الإلكتروني",
+    "bio": "السيره الذاتبه",
+    "saveChanges": "حفظ التغييرات"
+  },
+    "settings": {
+      "english": "الإنجليزيه",
+      "arabic": "العربيه",
+      "settings": "اللغه"
+    }
   }
-}

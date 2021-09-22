@@ -11,3 +11,5 @@ class BoldFont extends StatelessWidget {
       text, style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),);
   }
 }
+
+dynamic Token = '';

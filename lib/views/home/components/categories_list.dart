@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoplaza/const/fonts.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CategoriesList extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class CategoriesList extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               BoldFont(
-                text: 'Categories',
+                text: 'Home.categories'.tr(),
               ),
             ],
           ),

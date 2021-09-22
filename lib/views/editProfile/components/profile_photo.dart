@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 class ProfilePhoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class ProfilePhoto extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 5),
           child: TextButton(
-            child: Text('Change Profile Photo',
+            child: Text('EditProfile.changePhoto'.tr(),
                 style:
                     TextStyle(color: Colors.red, fontWeight: FontWeight.w500)),
             onPressed: () {},

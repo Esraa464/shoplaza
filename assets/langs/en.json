@@ -1,9 +1,62 @@
 {
   "Login": {
-    "proceed": "Proceed",
+    "proceed": "Proceed with your ",
     "login": "Login",
     "userName": "UserName",
+    "email": "ُEmail",
+    "Sign up": "Sign Up",
     "password": "Password",
     "forgotPass": "Forget Password?"
+  },
+  "Home": {
+    "categories": "Categories",
+    "products": "Products"
+  },
+  "SignUp": {
+    "SignUp": "Sign Up",
+    "Name": "Name",
+    "phone": "Phone Number",
+    "email": "ُEmail",
+    "password": "Password",
+    "agree": "I agree with the",
+    "Terms": "Terms and Condition",
+    "and": "and the",
+    "Privacy": " Privacy Policy",
+    "Signup": "Sign Up"
+  },
+  "ForgottenPass": {
+    "forgottenPass": "Forgotten Password",
+    "email": "Email",
+    "forgotPass": "Forgot your password",
+    "resetPass": "Reset your password"
+  },
+  "ResetPass": {
+    "resetPass": "Reset Password",
+    "currentPass": "Current Password",
+    "newPass": "New Password",
+    "confirmPass": "Confirm New Password",
+    "updatePass": "Update password"
+  },
+  "HomeDrawer": {
+    "Languages": "Languages",
+    "editProfile": "Edit Profile",
+    "darkMode": "Dark Mode",
+    "settings": "settings"
+  },
+  "EditProfile": {
+    "EditProfile": "Edit Profile",
+    "changePhoto": "Change Profile Photo",
+    "name": "Name",
+    "birthday": "BirthDay",
+    "email": "Email",
+    "bio": "Bio",
+    "saveChanges": "Save Changes"
+
+
+  },
+  "settings": {
+    "english": "English",
+    "arabic": "Arabic",
+    "settings": "Language"
   }
 }

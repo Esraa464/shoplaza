@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "472398201366",
+    "project_id": "shoplaza-aa9f3",
+    "storage_bucket": "shoplaza-aa9f3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:472398201366:android:5d92f58238a986a4d56b37",
+        "android_client_info": {
+          "package_name": "com.shoplaza.shoplaza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "472398201366-7b1k9uoje8i54hjag7j8atk2aodf97vr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw4elKSdjVJewKrlmU3wu0xVgaCnLXZw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "472398201366-7b1k9uoje8i54hjag7j8atk2aodf97vr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

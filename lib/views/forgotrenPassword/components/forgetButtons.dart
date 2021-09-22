@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shoplaza/views/forgotrenPassword/widgets/show_dialog_password.dart';
 import 'package:shoplaza/views/resetpassword/view.dart';
 import 'package:shoplaza/widgets/main_button.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ForgotButton extends StatelessWidget {
   @override
@@ -11,7 +12,7 @@ class ForgotButton extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 30),
           child: MainButton(
-            text: 'Forgot your password',
+            text: 'ForgottenPass.forgotPass'.tr(),
             press: () {
               // if (formKey.currentState.validate()) {
               // print(emailController.text);
@@ -21,10 +22,11 @@ class ForgotButton extends StatelessWidget {
         ),
         TextButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>ResetPassword()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ResetPasswordView()));
             },
             child: Text(
-              'Reset your password',
+              'ForgottenPass.resetPass'.tr(),
               style: TextStyle(color: Colors.grey[600], fontSize: 15),
             ))
       ],

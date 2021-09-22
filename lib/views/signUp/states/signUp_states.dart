@@ -1,3 +1,3 @@
 abstract class SignUpStates {}
-
-class TermsInit extends SignUpStates {}
+class SignUpInitial extends SignUpStates{}
+class SignUpLoading extends SignUpStates{}

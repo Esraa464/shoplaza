@@ -8,7 +8,7 @@ import 'package:shoplaza/views/home/components/promotion%20slider.dart';
 
 import 'components/categories_list.dart';
 
-class Home extends StatelessWidget {
+class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
