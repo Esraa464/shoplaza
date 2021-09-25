@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoplaza/views/HomeLayout/states.dart';
 import 'package:shoplaza/views/category_item/view.dart';
 import 'package:shoplaza/views/favourit/view.dart';
-import 'package:shoplaza/views/home/view.dart';
+import 'package:shoplaza/views/homeView/view.dart';
 import 'package:shoplaza/views/settings/view.dart';
 
 class HomeLayoutCubit extends Cubit<HomeLayoutStates> {

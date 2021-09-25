@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shoplaza/core/shared_helper.dart';
 import 'package:shoplaza/views/signUp/states/signUp_states.dart';
 
 class SignUpController extends Cubit<SignUpStates> {
@@ -16,9 +17,9 @@ class SignUpController extends Cubit<SignUpStates> {
 
   Future<String> signUp() async {
     emit(SignUpLoading());
-    // print(emailController.text);
+    print(emailController.text);
     try {
-      // print(emailController.text*90);
+      print(emailController.text*90);
       final response = await Dio().post(
         'https://student.valuxapps.com/api/register',
         data: {
@@ -33,12 +34,13 @@ class SignUpController extends Cubit<SignUpStates> {
       );
       // print(phoneController.text*90);
       final data = response.data as Map;
-      // print(nameController.text*90);
+      print(nameController.text*90);
       // print('$data');
       // print(data['data']['token'] * 90);
       if (data['status']) {
         print('$data');
         print(data['data']['token'] * 90);
+
         return 'ok';
       } else {
         emit(SignUpInitial());

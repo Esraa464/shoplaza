@@ -47,9 +47,9 @@
     "EditProfile": "Edit Profile",
     "changePhoto": "Change Profile Photo",
     "name": "Name",
-    "birthday": "BirthDay",
+    "phone": "Phone Number",
     "email": "Email",
-    "bio": "Bio",
+    "password": "Password",
     "saveChanges": "Save Changes"
 
 

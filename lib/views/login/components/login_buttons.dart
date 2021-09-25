@@ -25,7 +25,7 @@ class LoginButtons extends StatelessWidget {
                       //   return;
 
                       final message = await loginController.login();
-                      print(message * 90);
+                      // print(message * 90);
                       if (message != 'ok') {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(SnackBar(content: Text(message)));

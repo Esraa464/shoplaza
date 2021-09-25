@@ -15,7 +15,7 @@ class FavourItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Electron ',
+                  'Electron',
                   // overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 20,

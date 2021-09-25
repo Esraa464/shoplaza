@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:shoplaza/views/productDetails/view.dart';
-import 'package:shoplaza/views/productsCategory/components/product_Price.dart';
+import 'package:shoplaza/views/homeView/widgets/product_Price.dart';
+
 
 class GridBuilder extends StatelessWidget {
 
@@ -9,13 +9,15 @@ class GridBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20),
-      child: InkWell(
-        onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ProductView(),
-            )),
-        child: Column(
+      child:
+      // InkWell(
+      //   onTap: () => Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) => ProductView(),
+      //       )),
+      //   child:
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -30,7 +32,7 @@ class GridBuilder extends StatelessWidget {
             ProductPrice()
           ],
         ),
-      ),
+      // ),
     );
   }
 }
