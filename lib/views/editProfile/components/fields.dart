@@ -25,17 +25,11 @@ class Fields extends StatelessWidget {
             ),
           ),
           CustomTextFormField(
+            controller: controller.emailController,
             prefix: Icons.email_outlined,
             labelText: 'EditProfile.email'.tr(),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15),
-            child: CustomTextFormField(
-              controller: controller.passwordController,
-              prefix: Icons.lock_outlined,
-              labelText: 'EditProfile.password'.tr(),
-            ),
-          ),
+
         ],
       ),
     );

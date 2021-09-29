@@ -12,4 +12,4 @@ class BoldFont extends StatelessWidget {
   }
 }
 
-dynamic Token = '';
+// dynamic Token = '';

@@ -5,7 +5,6 @@ import 'package:shoplaza/core/shared_helper.dart';
 import 'package:shoplaza/views/login/states/login_states.dart';
 
 class LoginController extends Cubit<LoginStates> {
-
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -27,23 +26,14 @@ class LoginController extends Cubit<LoginStates> {
       );
       final data = response.data as Map;
       // if (data['status']) {
-      if(data['data']['token'] != null){
-        String idToken;
-        String pass;
-        idToken = data['data']['token'];
-       pass = data['data']['password'];
-print('hi password   '*90);
-        // await SharedHelper.setToken(idToken);
-        // await SharedHelper.setPassword(pass);
-        print('hi here  '*90);
+      if (data['data']['token'] != null) {
+        print('hi password   ' * 90);
+        await SharedHelper.setName(data['data']['name']);
+        await SharedHelper.setPhone(data['data']['phone']);
+        await SharedHelper.setEmail(data['data']['email']);
 
-        // String name;
-        // String phone;
-        // name = data['data']['name'];
-        // name = data['data']['phone'];
-        //
-        // await SharedHelper.setName(name);
-        // await SharedHelper.setPhone(phone);
+        print('hi here  ' * 90);
+
         return 'ok';
       } else {
         emit(LoginInitial());

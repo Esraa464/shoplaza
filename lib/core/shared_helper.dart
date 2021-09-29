@@ -15,8 +15,11 @@ class SharedHelper {
       await _prefs.setString('name', value);
   static Future<void> setPhone(String value) async =>
       await _prefs.setString('phone', value);
-  static Future<void> setPassword(String value) async =>
-      await _prefs.setString('password', value);
+
+  static Future<void> setEmail(String value) async =>
+      await _prefs.setString('email', value);
+  static Future<void> setImage(String value) async =>
+      await _prefs.setString('image', value);
 
   static bool get isLogged => _prefs.containsKey('token');
 
@@ -28,7 +31,8 @@ class SharedHelper {
 
   static String get getEmail => _prefs.getString('email');
 
-  static String get getPassword => _prefs.getString('password');
-
   static String get getName => _prefs.getString('name');
+
+  static String get getImage => _prefs.getString('image');
+
 }

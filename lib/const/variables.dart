@@ -8,4 +8,4 @@ Map<String, dynamic> headers = {
   // 'Content-Type':
 };
 
-final dioOptions = Options(headers: headers);
+final dioOptions = Options(headers: headers,);

@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:shoplaza/end_points.dart';
 import 'package:shoplaza/views/HomeLayout/view.dart';
-import 'package:shoplaza/views/editProfile/view.dart';
 import 'package:shoplaza/views/favourit/view.dart';
 
 import 'package:shoplaza/views/login/view.dart';
@@ -38,7 +36,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Shoplaza',
       theme: themeData,
-      // home: SharedHelper.isLogged ? HomeLayout() : LoginView(),
+
+      // home: SharedHelper.isLogged?HomeLayout():LoginView(),
       home:HomeLayout(),
     );
   }

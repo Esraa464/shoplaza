@@ -17,24 +17,22 @@ class EditProfileController extends Cubit<EditProfileStates> {
   File file;
 
   TextEditingController nameController =
-      TextEditingController(text: SharedHelper.getToken);
+      TextEditingController(text: SharedHelper.getName);
   TextEditingController phoneController =
-  TextEditingController(text: SharedHelper.getPhone);
+      TextEditingController(text: SharedHelper.getPhone);
 
   TextEditingController emailController =
-  TextEditingController(text: SharedHelper.getToken);
-
-  TextEditingController passwordController =
-  TextEditingController(text: SharedHelper.getPassword);
+      TextEditingController(text: SharedHelper.getEmail);
 
   Future<void> update() async {
     emit(EditProfileLoading());
+    print(SharedHelper.getEmail);
 
     /// HTTP & DIO ?? Body is Raw
     final formData = {
-      "name": "esoooo",
-      "phone": "1234567880",
-      "email": "esraa3@gmail.com",
+      "name": nameController.text,
+      "phone": phoneController.text,
+      "email": emailController.text,
       "password": "123456",
       if (file != null) "image": base64Encode(file.readAsBytesSync())
     };
@@ -53,7 +51,15 @@ class EditProfileController extends Cubit<EditProfileStates> {
       final response = await Dio().put(BASE_URL + 'update-profile',
           data: formData, options: dioOptions);
       //TODO: Caching data
+      print(SharedHelper.getName);
+
       await SharedHelper.setToken(response.data['data']['token']);
+      await SharedHelper.setName(response.data['data']['name']);
+      await SharedHelper.setEmail(response.data['data']['email']);
+      await SharedHelper.setPhone(response.data['data']['phone']);
+      await SharedHelper.setImage(response.data['data']['image']);
+
+      print(SharedHelper.getImage);
     } catch (e) {
       print(e);
     }

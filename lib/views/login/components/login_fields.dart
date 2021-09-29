@@ -10,6 +10,7 @@ class LoginFields extends StatelessWidget {
     return Form(
       key: controller.formKey,
       child: Column(
+
         children: [
           CustomTextFormField(
               type: TextInputType.emailAddress,

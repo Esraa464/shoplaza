@@ -8,10 +8,12 @@ import 'package:shoplaza/views/homeView/states/home_states.dart';
 class PromotionSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final banners = HomeController.of(context).homeModel.data.banners;
+    // final banners = HomeController.of(context).homeModel.data.banners;
+    final cubit = HomeController.of(context);
+
     return BlocBuilder<HomeController, HomeStates>(
         builder: (context, state) => state is HomeLoading
-            ? CircularProgressIndicator()
+            ? LinearProgressIndicator()
             : CarouselSlider.builder(
                 options: CarouselOptions(
                   viewportFraction: .9,
@@ -21,12 +23,12 @@ class PromotionSlider extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   autoPlay: true,
                 ),
-                itemCount: banners.length,
+                itemCount: cubit.homeModel.data.banners.length,
                 itemBuilder: (context, index, realIndex) => Container(
                   color: Colors.white,
                   width: 230,
                   child: Image.network(
-                    banners[index].image,
+                    cubit.homeModel.data.banners[index].image,
                     height: 150,
                   ),
                 ),
