@@ -4,7 +4,7 @@ import 'package:shoplaza/const/variables.dart';
 import 'package:shoplaza/views/categoryProducts/model.dart';
 import 'package:shoplaza/views/categoryProducts/states.dart';
 import 'package:shoplaza/views/favourit/model.dart';
-import 'package:shoplaza/views/favourit/states.dart';
+import 'package:shoplaza/views/favourit/components/states/states.dart';
 
 class CategoryProductController extends Cubit<CategoryProductStates> {
   CategoryProductController() : super(CategoryProductInitial());

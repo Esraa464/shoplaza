@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shoplaza/views/favourit/cubit.dart';
+import 'package:shoplaza/views/favourit/cubit/cubit.dart';
 import 'package:shoplaza/views/homeView/cubit/home_controller.dart';
 
 class FavourItem extends StatefulWidget {
@@ -41,13 +41,13 @@ class _FavourItemState extends State<FavourItem> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Text(
-                //  widget.name,
-                //   // overflow: TextOverflow.ellipsis,
-                //   style: TextStyle(
-                //     fontSize: 20,
-                //   ),
-                // ),
+                Text(
+                 widget.name,
+                  // overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

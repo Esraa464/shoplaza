@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoplaza/core/shared_helper.dart';
-import 'package:shoplaza/views/favourit/cubit.dart';
+import 'package:shoplaza/views/favourit/cubit/cubit.dart';
 import 'package:shoplaza/views/productDetails/view.dart';
 
 class ProductCard extends StatefulWidget {
@@ -11,9 +11,9 @@ class ProductCard extends StatefulWidget {
   final bool isDiscount;
   final String oldPrice;
   final int productId;
-  final int id;
 
-  const ProductCard({Key key, this.image, this.price, this.isFavourite, this.name, this.isDiscount = false, this.oldPrice, this.productId, this.id}) : super(key: key);
+
+  const ProductCard({Key key, this.image, this.price, this.isFavourite, this.name, this.isDiscount = false, this.oldPrice, this.productId,}) : super(key: key);
 
   @override
   _ProductCardState createState() => _ProductCardState();

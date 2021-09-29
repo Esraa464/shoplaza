@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shoplaza/views/favourit/cubit.dart';
+import 'package:shoplaza/views/favourit/cubit/cubit.dart';
 import 'package:shoplaza/views/homeView/components/products_gridView.dart';
 import 'package:shoplaza/views/homeView/states/home_states.dart';
 

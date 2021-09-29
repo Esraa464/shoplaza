@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shoplaza/const/fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:shoplaza/core/shared_helper.dart';
-import 'package:shoplaza/views/favourit/cubit.dart';
+import 'package:shoplaza/views/favourit/cubit/cubit.dart';
 import 'package:shoplaza/views/homeView/cubit/home_controller.dart';
 import 'package:shoplaza/views/productDetails/view.dart';
 import 'package:shoplaza/widgets/product_card.dart';
