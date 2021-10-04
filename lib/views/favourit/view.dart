@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shoplaza/views/favourit/cubit/cubit.dart';
 import 'package:shoplaza/views/favourit/cubit/get_fav_cubit.dart';
+import 'package:shoplaza/views/favourit/states/add_fav_states.dart';
 
 import 'components/fovourit_item.dart';
 
@@ -9,19 +9,14 @@ class FavoriteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // final cubit = HomeController.of(context);
-
-    final cubit = GetFavoriteController();
     return BlocProvider(
-      create: (context) => GetFavoriteController()..addFavModel,
+      create: (context) => GetFavoriteController()..getFavorite(),
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: BlocBuilder(
-            bloc: cubit,
+          child: BlocBuilder<GetFavoriteController, AddFavoriteStates>(
             builder: (context, state) =>
-            GetFavoriteController.of(context).addFavModel
-                // FavoriteController.of(context).favoriteModel
-                == null
+                GetFavoriteController.of(context).addFavModel == null
                     ? Text('No Result')
                     : ListView.separated(
                         physics: BouncingScrollPhysics(),
@@ -40,11 +35,19 @@ class FavoriteView extends StatelessWidget {
                               .data
                               .data[index]
                               .product;
+
+                          // final product = cubit.homeModel.data.products[index];
+
                           return FavourItem(
+                            // isFavourite:
+                            isDiscount: addFav.discount == 0,
                             name: addFav.name,
                             image: addFav.image,
                             oldPrice: addFav.oldPrice.toString(),
                             price: addFav.price.toString(),
+                            productId: addFav.id,
+                            index: index,
+                            // isFavourite: ProductDetailsController.of(context).productDetailsModel.data.inFavorites,
                           );
                         },
                       ),

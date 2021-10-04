@@ -40,7 +40,11 @@ class CategoriesList extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => CategoryProducts(
-                                      cubit.categoryModel.data.data[index].id),
+                                      // CategoryProductController.of(context).getProduct(
+                                      cubit.categoryModel.data.data[index].id
+                                      // )
+
+                                      ),
                                 )),
                             child: Column(
                               children: [

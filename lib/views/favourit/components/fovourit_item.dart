@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shoplaza/views/favourit/cubit/cubit.dart';
-import 'package:shoplaza/views/homeView/cubit/home_controller.dart';
+import 'package:shoplaza/views/favourit/cubit/get_fav_cubit.dart';
 
 class FavourItem extends StatefulWidget {
   final String image;
@@ -11,6 +11,7 @@ class FavourItem extends StatefulWidget {
   final String oldPrice;
   final int productId;
   final int id;
+  final int index;
 
   const FavourItem(
       {Key key,
@@ -21,7 +22,8 @@ class FavourItem extends StatefulWidget {
       this.isDiscount = false,
       this.oldPrice,
       this.productId,
-      this.id})
+      this.id,
+      this.index})
       : super(key: key);
 
   @override
@@ -29,12 +31,34 @@ class FavourItem extends StatefulWidget {
 }
 
 class _FavourItemState extends State<FavourItem> {
+  bool isFavourite;
+
+  @override
+  void initState() {
+    isFavourite = widget.isFavourite;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // final controller = FavoriteController();
     return Row(
       children: [
-        Image.network(widget.image),
+        Stack(alignment: Alignment.bottomLeft, children: [
+          // if(HomeController.of(context).favoriteModel.data.product.discount!=0)
+          Container(
+            child: Image.network(
+              widget.image,
+            ),
+            width: 100,
+          ),
+          Container(
+            child: Text(
+              'Discount',
+              style: TextStyle(color: Colors.white),
+            ),
+            color: Colors.red,
+          )
+        ]),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(15),
@@ -42,8 +66,9 @@ class _FavourItemState extends State<FavourItem> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                 widget.name,
-                  // overflow: TextOverflow.ellipsis,
+                  widget.name,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -52,37 +77,32 @@ class _FavourItemState extends State<FavourItem> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                     widget.price,
+                      widget.price,
                       style: TextStyle(color: Colors.red[900]),
                     ),
+                    // if (widget.isDiscount)
                     Text(
-                     widget.oldPrice,
+                      widget.oldPrice,
                       style: TextStyle(
                           decoration: TextDecoration.lineThrough,
                           color: Colors.grey),
                     ),
                     IconButton(
                       icon: CircleAvatar(
-                        child: Icon(
-                          Icons.delete,
-                          size: 20,
-                          color: Colors.white,
-                        ),
-                        backgroundColor:
-                        Colors.red,
-                        maxRadius: 14,
-                      ),
-                      onPressed: () {
-
-                        // FavoriteController().changeFavorite(widget.productId);
-                        // print(widget.productId);
-                        setState(() {
-
-                        });
-                        //TODO: Post request to favourites to API
-                        // favoriteCubit.changeFavorite(cubit.homeModel.data.products[index].id);
-                        // print(cubit.homeModel.data.products[index].id);
-                        // print(SharedHelper.getToken);
+                          child: Icon(
+                            Icons.favorite_border,
+                            size: 20,
+                            color: Colors.white,
+                          ),
+                          backgroundColor: Colors.red
+                          // isFavourite ? Colors.red : Colors.grey[500],
+                          // Colors.grey[500],
+                          // maxRadius: 14,
+                          ),
+                      onPressed: () async {
+                        FavoriteController().changeFavorite(widget.productId);
+                        await GetFavoriteController.of(context)
+                            .removeFromFavourite(widget.index);
                       },
                     )
                   ],

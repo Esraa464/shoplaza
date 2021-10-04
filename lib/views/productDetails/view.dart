@@ -1,52 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:shoplaza/const/colors.dart';
-import 'package:shoplaza/views/homeView/cubit/home_controller.dart';
-import 'package:shoplaza/views/homeView/states/home_states.dart';
 import 'package:shoplaza/views/productDetails/components/add_to_card.dart';
 import 'package:shoplaza/views/productDetails/components/product_details.dart';
-import 'package:shoplaza/views/productDetails/components/rating.dart';
+import 'package:shoplaza/views/productDetails/cubit.dart';
+import 'package:shoplaza/views/productDetails/states.dart';
 
-class ProductView extends StatelessWidget {
-  static String image;
-  static String name;
-  static int discount;
-  static double oldPrice;
-  static double price;
-  static String description;
-  // static List<String> images;
-  static bool inCart;
-  static bool inFavorites;
+class ProductDetailsView extends StatelessWidget {
+  final int id;
 
-  ProductView(
-      String image,
-      String name,
-      int discount,
-      double oldPrice,
-      double price,
-      String description,
-      // List<String> images,
-      bool inCart,
-      bool inFavorites);
+  ProductDetailsView(this.id);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeController()..getData(),
+      create: (context) => ProductDetailsController()..getProductData(this.id),
       child: Scaffold(
-        body: Column(
-          children: [
-            Expanded(
-              child: ListView(
-                children: [
-                  ProductDetails(),
-                ],
-              ),
-            ),
-            Divider(),
-            AddToCard(),
-          ],
+        appBar: AppBar(
+          title: Text(
+            'Details',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+        body: BlocBuilder<ProductDetailsController, ProductDetailsStates>(
+          builder: (context, state) => state is ProductDetailsLoading
+              ? Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Column(
+                  children: [
+                    Expanded(
+                      child: ListView(
+                        children: [
+                          ProductDetails(
+                            image: ProductDetailsController.of(context)
+                                .productDetailsModel
+                                .data
+                                .image,
+                            price: ProductDetailsController.of(context)
+                                .productDetailsModel
+                                .data
+                                .price,
+                            name: ProductDetailsController.of(context)
+                                .productDetailsModel
+                                .data
+                                .name,
+                            id: ProductDetailsController.of(context)
+                                .productDetailsModel
+                                .data
+                                .id,
+                            description: ProductDetailsController.of(context)
+                                .productDetailsModel
+                                .data
+                                .description,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(),
+                    AddToCard(
+                      id: ProductDetailsController.of(context)
+                          .productDetailsModel
+                          .data
+                          .id,
+                    ),
+                  ],
+                ),
         ),
       ),
     );

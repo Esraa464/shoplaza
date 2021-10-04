@@ -2,6 +2,7 @@
     package="com.shoplaza.shoplaza">
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:label="shoplaza"
         android:icon="@mipmap/ic_launcher">

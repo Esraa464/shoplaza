@@ -1,15 +1,15 @@
 // To parse this JSON data, do
 //
-//     final categoryProductModel = categoryProductModelFromJson(jsonString);
+//     final notificationModel = notificationModelFromJson(jsonString);
 
 import 'dart:convert';
 
-CategoryProductModel categoryProductModelFromJson(String str) => CategoryProductModel.fromJson(json.decode(str));
+NotificationModel notificationModelFromJson(String str) => NotificationModel.fromJson(json.decode(str));
 
-String categoryProductModelToJson(CategoryProductModel data) => json.encode(data.toJson());
+String notificationModelToJson(NotificationModel data) => json.encode(data.toJson());
 
-class CategoryProductModel {
-  CategoryProductModel({
+class NotificationModel {
+  NotificationModel({
     this.status,
     this.message,
     this.data,
@@ -19,7 +19,7 @@ class CategoryProductModel {
   dynamic message;
   Data data;
 
-  factory CategoryProductModel.fromJson(Map<String, dynamic> json) => CategoryProductModel(
+  factory NotificationModel.fromJson(Map<String, dynamic> json) => NotificationModel(
     status: json["status"],
     message: json["message"],
     data: Data.fromJson(json["data"]),
@@ -95,51 +95,23 @@ class Data {
 class Datum {
   Datum({
     this.id,
-    this.price,
-    this.oldPrice,
-    this.discount,
-    this.image,
-    this.name,
-    this.description,
-    this.images,
-    this.inFavorites,
-    this.inCart,
+    this.title,
+    this.message,
   });
 
   int id;
-  double price;
-  double oldPrice;
-  int discount;
-  String image;
-  String name;
-  String description;
-  List<String> images;
-  bool inFavorites;
-  bool inCart;
+  String title;
+  String message;
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
     id: json["id"],
-    price: json["price"].toDouble(),
-    oldPrice: json["old_price"].toDouble(),
-    discount: json["discount"],
-    image: json["image"],
-    name: json["name"],
-    description: json["description"],
-    images: List<String>.from(json["images"].map((x) => x)),
-    inFavorites: json["in_favorites"],
-    inCart: json["in_cart"],
+    title: json["title"],
+    message: json["message"],
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "price": price,
-    "old_price": oldPrice,
-    "discount": discount,
-    "image": image,
-    "name": name,
-    "description": description,
-    "images": List<dynamic>.from(images.map((x) => x)),
-    "in_favorites": inFavorites,
-    "in_cart": inCart,
+    "title": title,
+    "message": message,
   };
 }

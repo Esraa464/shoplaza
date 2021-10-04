@@ -1,17 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoplaza/const/variables.dart';
-import 'package:shoplaza/views/favourit/model.dart';
-import 'package:shoplaza/views/favourit/components/states/states.dart';
+import 'package:shoplaza/views/favourit/models/model.dart';
+import 'package:shoplaza/views/favourit/states/states.dart';
 
-import '../models/get_fav_model.dart';
+
 
 class FavoriteController extends Cubit<FavoriteStates> {
   FavoriteController() : super(FavoriteInitial());
 
   static FavoriteController of(context) => BlocProvider.of(context);
   FavoriteModel favoriteModel;
-  AddFavModel addFavModel;
   Future<void> changeFavorite(int productId) async {
     // emit(FavoriteInitial());
     try {

@@ -37,6 +37,8 @@ dependencies:
   shared_preferences: ^2.0.7
   flutter_rating_bar: ^4.0.0
   image_picker: ^0.8.4
+  url_launcher:
+  fluttertoast:
 
 dev_dependencies:
   flutter_test:
