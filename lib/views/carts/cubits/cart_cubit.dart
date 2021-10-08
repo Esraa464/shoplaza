@@ -10,7 +10,7 @@ class CartController extends Cubit<CartStates> {
   static CartController of(context) => BlocProvider.of(context);
   CartModel cartModel;
 
-  Future<void> clickCart(int productId) async {
+  Future<void> addCart(int productId) async {
     emit(CartLoading());
     try {
       final response = await Dio().post(

@@ -28,7 +28,7 @@ class AddToCard extends StatelessWidget {
               color: redColor, borderRadius: BorderRadius.circular(3)),
           child: GestureDetector(
             onTap: (){
-              CartController().clickCart(id);
+              CartController().addCart(id);
             },
             child: Row(
               children: [

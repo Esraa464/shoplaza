@@ -52,6 +52,9 @@ class ProductDetailsView extends StatelessWidget {
                                 .productDetailsModel
                                 .data
                                 .description,
+                            isFavorite: ProductDetailsController.of(context)
+                                .productDetailsModel
+                                .data.inFavorites ,
                           ),
                         ],
                       ),

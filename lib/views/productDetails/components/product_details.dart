@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shoplaza/const/colors.dart';
 import 'package:shoplaza/views/productDetails/cubit.dart';
 import 'package:shoplaza/views/productDetails/states.dart';
 
-class ProductDetails extends StatelessWidget {
+class ProductDetails extends StatefulWidget {
   final String image;
   final String name;
   final int price;
   final int id;
   final String description;
+  final bool isFavorite;
 
   const ProductDetails(
-      {Key key, this.image, this.name, this.price, this.id, this.description})
+      {Key key,
+      this.image,
+      this.name,
+      this.price,
+      this.id,
+      this.description,
+      this.isFavorite})
       : super(key: key);
 
   @override
+  _ProductDetailsState createState() => _ProductDetailsState();
+}
+
+class _ProductDetailsState extends State<ProductDetails> {
+  @override
   Widget build(BuildContext context) {
-    print(image);
+    print(widget.image);
     return Padding(
       padding: const EdgeInsets.all(10),
       child: BlocBuilder<ProductDetailsController, ProductDetailsStates>(
@@ -38,7 +51,7 @@ class ProductDetails extends StatelessWidget {
                       // padding: EdgeInsets.all(.8),
                     ),
                     Image.network(
-                      image,
+                      widget.image,
                       // height: 200,
                       // fit: BoxFit.cover,
                     ),
@@ -49,7 +62,7 @@ class ProductDetails extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Text(
-                      name,
+                      widget.name,
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
@@ -63,10 +76,25 @@ class ProductDetails extends StatelessWidget {
                         ),
                         Container(
                           child: Text(
-                            price.toString(),
+                            widget.price.toString(),
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                           decoration: BoxDecoration(color: Colors.redAccent),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 2,
+                        ),
+                        IconButton(
+                          icon: widget.isFavorite
+                              ? Icon(
+                                  Icons.favorite,
+                                  color: redColor,
+                                )
+                              : Icon(
+                                  Icons.favorite_outline,
+                                  color: Colors.grey,
+                                ),
+                          onPressed: () {},
                         ),
                       ],
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shoplaza/const/colors.dart';
 import 'package:shoplaza/core/shared_helper.dart';
 import 'package:shoplaza/views/favourit/cubit/cubit.dart';
 import 'package:shoplaza/views/productDetails/view.dart';
@@ -80,6 +81,7 @@ class _ProductCardState extends State<ProductCard> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+
                 Text(
                   widget.price,
                 ),
@@ -113,7 +115,9 @@ class _ProductCardState extends State<ProductCard> {
                       isFavourite = !isFavourite;
                     });
                     Fluttertoast.showToast(
-                        msg: isFavourite ? 'Added Successfully' : 'Deleted Successfully',
+                        msg: isFavourite
+                            ? 'Added Successfully'
+                            : 'Deleted Successfully',
                         toastLength: Toast.LENGTH_SHORT,
                         gravity: ToastGravity.BOTTOM,
                         timeInSecForIosWeb: 1,

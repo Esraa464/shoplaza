@@ -16,7 +16,7 @@ class AddCartModel {
   });
 
   bool status;
-  dynamic message;
+  String message;
   Data data;
 
   factory AddCartModel.fromJson(Map<String, dynamic> json) => AddCartModel(

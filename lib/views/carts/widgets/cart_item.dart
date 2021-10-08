@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shoplaza/const/colors.dart';
+import 'package:shoplaza/views/carts/cubits/get_cart_cubit.dart';
 
-class CartItemm extends StatelessWidget {
+class CartItemm extends StatefulWidget {
   final String image;
   final String price;
   final bool isFavourite;
@@ -9,6 +10,10 @@ class CartItemm extends StatelessWidget {
   final bool isDiscount;
   final String oldPrice;
   final int productId;
+  final int cartId;
+  final int index;
+  final int quantity;
+  final CartViewController controller;
 
   const CartItemm(
       {Key key,
@@ -18,8 +23,27 @@ class CartItemm extends StatelessWidget {
       this.name,
       this.isDiscount,
       this.oldPrice,
-      this.productId})
+      this.productId,
+      this.index,
+      this.quantity = 1,
+      @required this.controller,
+      this.cartId})
       : super(key: key);
+
+  @override
+  _CartItemmState createState() => _CartItemmState();
+}
+
+class _CartItemmState extends State<CartItemm> {
+  bool isFavourite;
+  int counter = 1;
+
+  @override
+  void initState() {
+    isFavourite = widget.isFavourite;
+    counter = widget.quantity;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +62,7 @@ class CartItemm extends StatelessWidget {
             Row(
               children: [
                 Image.network(
-                  image,
+                  widget.image,
                   width: 60,
                 ),
                 Expanded(
@@ -47,25 +71,44 @@ class CartItemm extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          name,
+                          widget.name,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontSize: 17,
                           ),
                         ),
-                        Row(
-                          children: [
-                            Text(price.toString()),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              oldPrice.toString(),
-                              style: TextStyle(
-                                  decoration: TextDecoration.lineThrough),
-                            )
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Egp',
+                                style: TextStyle(color: redColor, fontSize: 16),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                widget.price.toString(),
+                                style: TextStyle(
+                                  color: redColor,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              if (widget.isDiscount)
+                                Text(
+                                  widget.oldPrice.toString(),
+                                  style: TextStyle(
+                                      decoration: TextDecoration.lineThrough,
+                                      color: Colors.grey,
+                                      fontSize: 16),
+                                )
+                            ],
+                          ),
                         )
                       ],
                     ),
@@ -75,25 +118,82 @@ class CartItemm extends StatelessWidget {
             ),
             Divider(),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(
-                  Icons.favorite_outline,
-                  color: redColor,
-                ),
+                widget.isFavourite
+                    ? IconButton(
+                        icon: Icon(
+                          Icons.favorite,
+                          color: redColor,
+                        ),
+                        onPressed: () {
+                          // FavoriteController.of(context)
+                          //     .changeFavorite(widget.productId);
+                          // print(widget.productId);
+                          // setState(() {
+                          //   isFavourite = !isFavourite;
+                          // });
+                        },
+                      )
+                    : Icon(Icons.favorite_outline),
                 IconButton(
                   icon: Icon(
                     Icons.delete,
                     color: redColor,
                   ),
-                  onPressed: () {
-                    // CartViewController.of(context)
-                    //     .addCartModel
-                    //     .data
-                    //     .cartItems
-                    //     .removeAt(index);
+                  onPressed: () async {
+                    widget.controller.removeFromCart(widget.cartId);
+                    // CartController().clickCart(widget.productId);
+                    // await CartViewController.of(context)
+                    //     .removeFromCart(widget.index);
                   },
-                )
+                ),
+                IconButton(
+                  icon: CircleAvatar(
+                    maxRadius: 13,
+                    child: Icon(
+                      Icons.remove,
+                      color: Colors.white,
+                      size: 15,
+                    ),
+                    backgroundColor: redColor,
+                  ),
+                  onPressed: () {
+                    if (counter > 1) {
+                      setState(() {
+                        counter--;
+                      });
+                      widget.controller.updateCart(counter, widget.cartId);
+                    }
+                  },
+                ),
+                Text(
+                  '$counter',
+                  style: TextStyle(),
+                ),
+                IconButton(
+                  icon: CircleAvatar(
+                    maxRadius: 13,
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 15,
+                    ),
+                    backgroundColor: redColor,
+                  ),
+                  onPressed: () {
+                    //   UpdateCartController().updateCart(
+                    //       CartController.of(context).cartModel.data.quantity);
+                    // print( CartController.of(context).cartModel.data.quantity);
+                    // CartController.of(context).cartModel.data.product.id;
+                    setState(
+                      () {
+                        counter++;
+                      },
+                    );
+                    widget.controller.updateCart(counter, widget.cartId);
+                  },
+                ),
               ],
             )
           ],
