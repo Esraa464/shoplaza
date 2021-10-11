@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shoplaza/views/signUp/cubits/terms_controller.dart';
 import 'package:shoplaza/views/signUp/cubits/signUp_controller.dart';
 import 'package:shoplaza/widgets/custom_text_form_field.dart';
 import 'package:easy_localization/easy_localization.dart';

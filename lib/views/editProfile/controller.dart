@@ -77,6 +77,7 @@ class EditProfileController extends Cubit<EditProfileStates> {
   @override
   Future<void> close() {
     nameController.dispose();
+    phoneController.dispose();
     return super.close();
   }
 }

@@ -4,8 +4,13 @@ import 'package:shoplaza/const/colors.dart';
 import 'package:shoplaza/views/carts/cubits/get_cart_cubit.dart';
 import 'package:shoplaza/views/carts/states/get_cart_states.dart';
 import 'package:shoplaza/views/carts/widgets/cart_item.dart';
+import 'package:shoplaza/views/checkOut/view.dart';
+import 'package:shoplaza/widgets/main_button.dart';
 
 class CartsList extends StatelessWidget {
+  // final double total;
+  //
+  // const CartsList({Key key, this.total}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartViewController, CartViewStates>(
@@ -26,8 +31,16 @@ class CartsList extends StatelessWidget {
                         return CartItemm(
                           index: index,
                           controller: CartViewController.of(context),
-                          cartId: CartViewController.of(context).addCartModel.data.cartItems[index].id,
-                          quantity: CartViewController.of(context).addCartModel.data.cartItems[index].quantity,
+                          cartId: CartViewController.of(context)
+                              .addCartModel
+                              .data
+                              .cartItems[index]
+                              .id,
+                          quantity: CartViewController.of(context)
+                              .addCartModel
+                              .data
+                              .cartItems[index]
+                              .quantity,
                           productId: cart.id,
                           image: cart.image,
                           name: cart.name,
@@ -74,6 +87,38 @@ class CartsList extends StatelessWidget {
                       border: Border.all(color: Colors.grey),
                     ),
                     height: 70,
+                  ),
+                  if(CartViewController.of(context)
+                      .addCartModel
+                      .data
+                      .cartItems.isNotEmpty)
+                  MainButton(
+                      text: ('COMPLETE YOUR ORDER'),
+                      press: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => CheckOut(
+                                total: CartViewController.of(context)
+                                    .addCartModel
+                                    .data
+                                    .total
+                                    .toDouble(),
+                              ),
+                            ));
+                      }),
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.grey)),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'CALL TO ORDER',
+                        style: TextStyle(
+                            color: redColor, fontWeight: FontWeight.w900),
+                      ),
+                    ),
                   )
                 ],
               ));

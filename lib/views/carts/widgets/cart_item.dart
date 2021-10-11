@@ -156,16 +156,14 @@ class _CartItemmState extends State<CartItemm> {
                       color: Colors.white,
                       size: 15,
                     ),
-                    backgroundColor: redColor,
+                    backgroundColor: (counter > 1) ? redColor : Colors.grey,
                   ),
-                  onPressed: () {
-                    if (counter > 1) {
+                  onPressed: (counter > 1) ? () {
                       setState(() {
                         counter--;
                       });
                       widget.controller.updateCart(counter, widget.cartId);
-                    }
-                  },
+                  } : null,
                 ),
                 Text(
                   '$counter',

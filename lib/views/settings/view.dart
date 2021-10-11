@@ -33,7 +33,7 @@ class _SettingsViewState extends State<SettingsView> {
             More(),
             Divider(),
             Language(),
-            Country()
+            Address()
           ],
         ));
   }

@@ -14,7 +14,7 @@ class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     Key key,
     @required this.controller,
-    @required this.type,
+    this.type = TextInputType.text,
     this.prefix,
     this.suffix,
     @required this.labelText,
@@ -41,12 +41,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     }
     return 'hi';
   }
+  IconData suffix = Icons.visibility_off;
+  bool isShown = true;
+  bool visible = true;
 
   @override
   Widget build(BuildContext context) {
-    IconData suffix = Icons.visibility_off;
-    bool isShown = true;
-    bool visible = true;
     return TextFormField(
         // validator: (value) {
         //   if (value.isEmpty) {
